@@ -1,0 +1,57 @@
+{
+	"version": "1",
+	"notes": "nodePath can be relative or absolute",
+	"paths": [
+		{
+			"path": "/saveOrder",
+			"routes": [
+				{
+					"actorName": "saveOrder",
+				    "version": "1",
+				    "groups": ["orders"],				    
+				    "nodePath": "/user/saveOrder"
+				},
+				{
+					"actorName": "saveOrder1",
+				    "version": "1.1",
+				    "groups": ["orders","qa"],
+				    "nodePath": "/user/saveOrder1"			
+				}
+			]
+		},
+		{
+			"path": "/modifyOrder",
+			"routes": [
+				{
+					"actorName": "modifyOrder",
+				    "version": "1",
+				    "groups": ["orders"],				    
+				    "nodePath": "/user/modifyOrder"
+				},
+				{
+					"actorName": "modifyOrder1",
+				    "version": "1.1",
+				    "groups": ["orders","qa"],
+				    "nodePath": "/user/modifyOrder1"			
+				}
+			]	
+		},
+		{
+			"path": "/deleteOrder",
+			"routes": [
+				{
+					"actorName": "deleteOrder",
+				    "version": "1",
+				    "groups": ["orders"],				    
+				    "nodePath": "/user/deleteOrder"
+				},
+				{
+					"actorName": "deleteOrder1",
+				    "version": "1.1",
+				    "groups": ["orders","qa"],				    
+				    "nodePath": "/user/deleteOrder1"			
+				}
+			]	
+		}	
+	]
+}

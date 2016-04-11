@@ -1,0 +1,74 @@
+{
+	"version": "1",
+	"notes": "used by the RoutingLogic test script",
+	"paths": [
+		{
+			"path": "/One",
+			"routes": [
+				{
+					"actorName": "test1",
+				    "version": "1",
+				    "nodePath": "/user/testone"
+				},
+				{
+					"actorName": "test1_2",
+				    "version": "1.1",
+				    "groups": ["qa"],
+				    "nodePath": "/user/testonetwo"			
+				}
+			]
+		},
+		{
+			"path": "/Two",
+			"routes": [
+				{
+					"actorName": "test2",
+				    "version": "1",
+				    "nodePath": "/user/testtwo"
+				},
+				{
+					"actorName": "test2_2",
+				    "version": "1.1",
+				    "groups": ["qa"],
+				    "nodePath": "/user/testtwotwo"			
+				}
+			]	
+		},
+		{
+			"path": "/Three",
+			"routes": [
+				{
+					"actorName": "test3",
+				    "version": "1",
+				    "nodePath": "/user/testthree"
+				},
+				{
+					"actorName": "test3_2",
+				    "version": "1.1",
+				    "groups": ["qa"],				    
+				    "nodePath": "/user/testthreetwo"			
+				}
+			]	
+		},			
+		{
+			"path": "/Four",
+			"routes": [
+				{
+					"actorName": "test4",
+				    "version": "1",
+				    "nodePath": "/user/testfour"
+				}
+			]	
+		},			
+		{
+			"path": "/Five",
+			"routes": [
+				{
+					"actorName": "test5",
+				    "version": "1",
+				    "nodePath": "/user/testfive"
+				}
+			]	
+		}	
+	]
+}
