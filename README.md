@@ -207,7 +207,7 @@ The sample application is a small cluster with two seed nodes. The first node co
 To run the sample application from SBT:
 
 ```
-> **run**
+> run
 ```
 Once the cluster starts up, the message generator starts sending messages every 10 seconds. If you want, you can make modifications to the **Routes.json** file while the application is running. As long as there are no parsing errors and all referenced actors can be found, the new rules take effect within a minute. 
 
