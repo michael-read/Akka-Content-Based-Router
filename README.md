@@ -1,4 +1,4 @@
-#How to Create a Non-stop Microservices Platform using Akka
+#How to Create a Non-Stop Microservices Platform using Akka
 ##Introduction
 If you have interest in Scala / Akka and how to create a non-stop (“always available”) microservices platform using Akka's clustering capability then please read on. Some knowledge of Akka's actor system is assumed. Throughout this post the terms microservices and actors are used interchangeably.
 
@@ -14,7 +14,7 @@ Continuous delivery is where software is developed in short cycles. It aims to b
 
 Additionally, we wanted the capability to run any number of microservice versions in the production environment at one time. We also wanted to build new microservices and immediately push them to production. These new microservices would be enabled for user acceptance testing / quality assurance through configuration but not available to current production users. Once user acceptance testing is completed these new versions could simply be turned on. This approach would ultimately remove the need for a majority of the development environment as well as the complete obsolescence of a staging environment, thus saving valuable resources and money.
 
-##The Concept - Content Based Message Routing
+##The Concept - Content-Based Message Routing
 Akka is one fantastic message driven platform and has variety message routers that are used primarily for load balancing. However, there are no routers out of the box that can be configured for content based message routing. The good news is that Akka provides APIs that allow for the construction of custom routing logic.
 
 To be honest, I've never been a big fan of content-based routing due to the additional overhead of inspecting the content and trying to make a decision on where to send it. My adage has always been stupid pipes are much faster than smart pipes. That said, I've changed my mind and now think that content-based message routing is the perfect use case to enable non-stop microservice operation and an enhanced continuous deliver model for the Akka platform.
@@ -31,9 +31,9 @@ This content-based router logic (com.mread.routers.ConfigurableRouterLogic) perf
 
 The configuration rules parser / loader is run when the router is first created and also when a change is detected in the configuration file. If there are no errors detected in the configuration, and all the referenced actors can be found in the cluster, only then are the new rules activated in the routing logic. An Akka timer is created to check, once a minute, for changes in the configuration file's signature. If a change is detected, and errors exist, the existing rules are kept in place and router operations continue as before.
 
-Akka's **resolveOne** method, which is used to resolve an actor via the actor's path (nodePath,) returns a **Future[ActorRef]**. Akka's **select** method, which is used to route messages, requires a concrete actor reference (non-Future). Since these two APIs are in conflict the actor references need to be resolved while loading the configuration instead of using a traditionally lazy pattern.
+Akka's **resolveOne** method which is used to resolve an actor via the actor's path (nodePath), returns a **Future[ActorRef]**. Akka's **select** method which is used to route messages, requires a concrete actor reference (non-Future). Since these two APIs are in conflict, the actor references need to be resolved while loading the configuration instead of using a traditionally lazy pattern. Additionally, we don't want to use a potential configuration that has errors.
 
-I always tell new Scala developers that they need learn how to break up long linear solutions into blocks of small solutions that can be run in parallel whenever possible. This is a perfect example of using Scala's Future to do things in parallel by resolving all the required actors all at once. I don't know if you can say that the following method “contains syntactic sugar” but it does contain sugar none the less.
+I always tell new Scala developers that they need to learn how to break up long linear solutions into blocks of small solutions that can be run in parallel whenever possible. This is a perfect example of using Scala's Future to do things in parallel by resolving the required actors all at once. I don't know if you can say that the following method “contains syntactic sugar” but it does contain sugar nonetheless.
 
 ```Scala
 /**
@@ -94,11 +94,11 @@ I always tell new Scala developers that they need learn how to break up long lin
     }
   }
 ```
-The **findRoutees** method takes a map of routes, and returns a successful **Future[Boolean]** if all actor nodePaths were found. This is done by looping though all the configured routes, uses the resolveOne method to find the ActorRef for each route and then holds all the Futures in a mutable list of Future[Object]. It then wraps these Futures into a List of Future[Try] and finally filters out any failures to return the Future[Boolean].
- 
-If you run the sample application (below) on a multi-core computer note the tight time gap between the resolutions in the console.
+The **findRoutees** method takes a map of routes and returns a successful **Future[Boolean]** if all actor nodePaths were found. This is done by looping though all the configured routes using the resolveOne method to find the ActorRef for each route then holds all the Futures in a mutable list of Future[Object]. It then wraps these Futures into a List of Future[Try] and finally filters out any failures to return the Future[Boolean]. 
 
-The content-based message router is actually an actor that routes messages received through its inbox through a ConfigurableRouterLogic object, which uses an in-memory cache to speed the transition of future messages that match the key generated from the target actor / user security group combination.
+If you run the sample application (below) on a multi-core computer, note the tight time gaps between the resolutions in the console.
+
+The content-based message router is actually an actor that routes messages received through its inbox through a **ConfigurableRouterLogic** object, which uses an in-memory cache to speed the transition of future messages that match the key generated from the target actor / user security group combination.
 
 ###Configuration
 Primary and fail-over routers are configured in a node's configuration file. The following is extracted from **application.conf**:
