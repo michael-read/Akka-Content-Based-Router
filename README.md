@@ -187,18 +187,18 @@ Before continuing you'll need to have Scala (2.11.7) and SBT installed. The foll
 To test the configuration parser:
 
 ```
-> testOnly com.mread.test.json.TestRoutes
+> **testOnly com.mread.test.json.TestRoutes**
 ```
 To test the RoutingLogic:
 
 ```
-> testOnly com.mread.test.router.RoutingLogic
+> **testOnly com.mread.test.router.RoutingLogic**
 ```
 
 To test both at once:
 
 ```
-> test
+> **test**
 ```
 ###Running the Sample Application
 
@@ -207,7 +207,7 @@ The sample application is a small cluster with two seed nodes. The first node co
 To run the sample application from SBT:
 
 ```
-> run
+> **run**
 ```
 Once the cluster starts up, the message generator starts sending messages every 10 seconds. If you want, you can make modifications to the **Routes.json** file while the application is running. As long as there are no parsing errors and all referenced actors can be found, the new rules take effect within a minute. 
 
@@ -217,7 +217,7 @@ To add the new node to the cluster from SBT:
 
 1. First open a new terminal window, and move to the directory containing the project.
 2. Start a new version of SBT, and then issue the command:
->\> run 2053
+	- \> **run 2053**
 3. Next modify Routes.json by replacing the “routes” for the target /saveOrder with the following:
 
 ```JSON
