@@ -187,18 +187,18 @@ Before continuing you'll need to have Scala (2.11.7) and SBT installed. The foll
 To test the configuration parser:
 
 ```
-> **testOnly com.mread.test.json.TestRoutes**
+> testOnly com.mread.test.json.TestRoutes
 ```
 To test the RoutingLogic:
 
 ```
-> **testOnly com.mread.test.router.RoutingLogic**
+> testOnly com.mread.test.router.RoutingLogic
 ```
 
 To test both at once:
 
 ```
-> **test**
+> test
 ```
 ###Running the Sample Application
 
