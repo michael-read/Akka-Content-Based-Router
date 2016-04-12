@@ -1,3 +1,5 @@
+![Akka Actor System](https://raw.githubusercontent.com/michael-read/Akka-Content-Based-Router/master/actor_system.png)
+
 #How to Create a Non-Stop Microservices Platform using Akka
 ##Introduction
 If you have interest in Scala / Akka and how to create a non-stop (“always available”) microservices platform using Akka's clustering capability then please read on. Some knowledge of Akka's actor system is assumed. Throughout this post the terms microservices and actors are used interchangeably.
@@ -103,7 +105,7 @@ The content-based message router is actually an actor that routes messages recei
 ###Configuration
 Primary and fail-over routers are configured in a node's configuration file. The following is extracted from **application.conf**:
 
-```JSON
+```
 mread {
 	clusterRouter {
 		configFile = "src/main/resources/Routes.json"
