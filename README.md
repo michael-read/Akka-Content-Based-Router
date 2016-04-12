@@ -1,4 +1,4 @@
-![Akka Actor System](https://raw.githubusercontent.com/michael-read/Akka-Content-Based-Router/master/actor_system.png)
+![Akka Actor System w/ Content-Based Routing](https://raw.githubusercontent.com/michael-read/Akka-Content-Based-Router/master/actor_system.png)
 
 #How to Create a Non-Stop Microservices Platform using Akka
 ##Introduction
@@ -217,7 +217,7 @@ To add the new node to the cluster from SBT:
 
 1. First open a new terminal window, and move to the directory containing the project.
 2. Start a new version of SBT, and then issue the command:
-..* > run 2053
+>\> run 2053
 3. Next modify Routes.json by replacing the “routes” for the target /saveOrder with the following:
 
 ```JSON
