@@ -1,7 +1,7 @@
 ![Akka Actor System w/ Content-Based Routing](https://raw.githubusercontent.com/michael-read/Akka-Content-Based-Router/master/actor_system.png)
 
-#How to Create a Non-Stop Microservices Platform using Akka
-##Introduction
+# How to Create a Non-Stop Microservices Platform using Akka
+## Introduction
 If you have interest in Scala / Akka and how to create a non-stop (“always available”) microservices platform using Akka's clustering capability then please read on. Some knowledge of Akka's actor system is assumed. Throughout this post the terms microservices and actors are used interchangeably.
 
 First, a little background. When we first started architecting ResortShare's new reservation platform in March 2015, I was sure of two things: the traditional Java monolithic application wasn't going to give us the flexibility we needed, and that a document-based database would provide a much better solution than a traditional relational SQL database. This post is about the former and doing away with the Java monolith by adopting a microservices based architecture.
